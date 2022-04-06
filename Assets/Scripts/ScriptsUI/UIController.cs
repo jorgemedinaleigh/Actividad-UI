@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        totalTime -= Time.deltaTime;
+        totalTime += Time.deltaTime;
 
         float minutes = Mathf.FloorToInt(totalTime / 60);
         float seconds = Mathf.FloorToInt(totalTime % 60);
