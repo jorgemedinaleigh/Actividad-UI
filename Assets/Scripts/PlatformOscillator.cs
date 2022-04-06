@@ -16,6 +16,11 @@ public class PlatformOscillator : MonoBehaviour
 
     void Update()
     {
+        MovePlatform();
+    }
+
+    void MovePlatform()
+    {
         if (period <= Mathf.Epsilon) //Epsilon = the smallest number of type float
         {
             return;
@@ -29,5 +34,15 @@ public class PlatformOscillator : MonoBehaviour
 
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPosition + offset;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.collider.transform.SetParent(transform);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        collision.collider.transform.SetParent(null);
     }
 }
